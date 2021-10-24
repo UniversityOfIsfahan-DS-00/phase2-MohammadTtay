@@ -10,9 +10,10 @@ class Node {
   Node() {
     nextInRow = nullptr;
   }
-  Node(int value, Node * Next) {
+  Node(int value, int coloumnIndex) {
     this -> value = value;
-    this -> nextInRow = Next;
+    this -> coloumnIndex = coloumnIndex;
+     nextInRow = nullptr;
   }
 };
 

@@ -66,6 +66,32 @@ class Matrix {
   }
 
   void Insert(int row, int col, int value) {
+      Node* tempNode=new Node(value,col);
+
+      linkList* tempLN=&matrix[row-1];
+
+      if (tempLN->size == 0) {
+        tempLN->addFirst(tempNode);
+      }
+      else {
+        if (tempNode -> coloumnIndex < tempLN->head -> coloumnIndex) tempLN->addFirst(tempNode);
+        else if (tempNode -> coloumnIndex > tempLN->tail -> coloumnIndex) tempLN->addLast(tempNode);
+        else {
+          Node * First = tempLN->head;
+          Node * Second = tempLN->head;
+
+          while (Second -> nextInRow != nullptr) {
+            Second = First -> nextInRow;
+            if (tempNode -> coloumnIndex < Second -> coloumnIndex) {
+              First -> nextInRow = tempNode;
+              tempNode -> nextInRow = Second;
+              break;
+            }
+            First = Second;
+          }
+
+        }
+      }
 
   }
   void Delete(int row, int col) {
