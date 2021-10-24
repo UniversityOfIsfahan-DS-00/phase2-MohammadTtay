@@ -1,8 +1,10 @@
-#include <QCoreApplication>
+#include <iostream>
 
-int main(int argc, char *argv[])
-{
-    QCoreApplication a(argc, argv);
+#include<Matrix.h>
 
-    return a.exec();
+int main() {
+
+  Matrix matrix;
+
+  return 0;
 }
