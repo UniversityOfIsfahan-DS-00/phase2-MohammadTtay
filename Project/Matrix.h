@@ -99,6 +99,8 @@ class Matrix {
         }
       }
 
+      tempLN->size++;
+
   }
   void Delete(int row, int col) {
 
@@ -204,6 +206,19 @@ class Matrix {
 
     }
 
+  }
+  void save_file(){
+
+      QFile file(this->Address);
+      QTextStream out( & file);
+      file.open(QIODevice::WriteOnly | QIODevice::Text);
+      for (int i = 0; i < rowNum; i++) {
+        for (int j = 0; j < colNum; j++) {
+          out << matrix[i][j] << ",";
+        }
+        out << endl;
+      }
+      file.close();
   }
 
 };
