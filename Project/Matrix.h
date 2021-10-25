@@ -96,6 +96,51 @@ class Matrix {
   }
   void Delete(int row, int col) {
 
+    linkList * tempLN = & matrix[row - 1];
+
+    if (tempLN -> size == 1) {
+      Node * temp = tempLN -> head;
+      tempLN -> head = nullptr;
+      tempLN -> tail = nullptr;
+      delete temp;
+    }
+    else {
+      if (tempLN -> head -> coloumnIndex == col) {
+        Node * temp = tempLN -> head;
+        tempLN -> head = tempLN -> head -> nextInRow;
+        delete temp;
+      }
+      else if (tempLN -> tail -> coloumnIndex == col) {
+        Node * backTail = tempLN -> head;
+
+        while (backTail -> nextInRow != tempLN -> tail) {
+          backTail = backTail -> nextInRow;
+        }
+        Node * temp = tempLN -> tail;
+        tempLN -> tail = backTail;
+        delete temp;
+      }
+      else {
+        Node * currentNode = tempLN -> head -> nextInRow;
+        Node * backNode = tempLN -> head;
+
+        while (currentNode != nullptr) {
+
+          if (currentNode -> coloumnIndex == col) {
+            backNode->nextInRow = currentNode -> nextInRow;
+            delete currentNode;
+            break;
+          }
+          backNode = currentNode;
+          currentNode = currentNode -> nextInRow;
+        }
+      }
+
+    }
+    tempLN->size--;
+
+    cout << "Deleted Succesfully...\n\n";
+
   }
   void Search(int value) {
 
@@ -104,13 +149,13 @@ class Matrix {
 
       while (currentNode != nullptr) {
         if (value == currentNode -> value) {
-          cout << "Found\n\n";
+          cout << "Found...\n\n";
           return;
         }
         currentNode = currentNode -> nextInRow;
       }
     }
-    cout << "Not Found\n\n";
+    cout << "Not Found...\n\n";
     return;
   }
   void update(int row, int col, int value) {
