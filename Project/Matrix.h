@@ -139,7 +139,7 @@ class Matrix {
     }
     tempLN->size--;
 
-    cout << "Deleted Succesfully...\n\n";
+    cout << "Deleted Successfully...\n\n";
 
   }
   void Search(int value) {
@@ -159,6 +159,19 @@ class Matrix {
     return;
   }
   void update(int row, int col, int value) {
+
+    linkList * tempLN = & matrix[row - 1];
+
+    Node * currentNode = tempLN -> head;
+
+    while (currentNode != nullptr) {
+      if (currentNode -> coloumnIndex == col) {
+        currentNode -> value = value;
+        break;
+      }
+      currentNode = currentNode -> nextInRow;
+    }
+    cout << "The Value Updated Successfully...\n\n";
 
   }
   void print(bool type) {
