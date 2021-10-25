@@ -147,8 +147,6 @@ class Matrix {
     }
     tempLN->size--;
 
-    cout << "Deleted Successfully...\n\n";
-
   }
   void Search(int value) {
 
@@ -157,13 +155,13 @@ class Matrix {
 
       while (currentNode != nullptr) {
         if (value == currentNode -> value) {
-          cout << "Found...\n\n";
+          cout << "The Value Has Found...\n\n";
           return;
         }
         currentNode = currentNode -> nextInRow;
       }
     }
-    cout << "Not Found...\n\n";
+    cout << "The Value Has Not Found...\n\n";
     return;
   }
   void update(int row, int col, int value) {
