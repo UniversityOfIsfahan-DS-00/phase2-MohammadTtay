@@ -99,6 +99,19 @@ class Matrix {
   }
   void Search(int value) {
 
+    for (auto & x: matrix) {
+      Node * currentNode = x.head;
+
+      while (currentNode != nullptr) {
+        if (value == currentNode -> value) {
+          cout << "Found\n\n";
+          return;
+        }
+        currentNode = currentNode -> nextInRow;
+      }
+    }
+    cout << "Not Found\n\n";
+    return;
   }
   void update(int row, int col, int value) {
 
