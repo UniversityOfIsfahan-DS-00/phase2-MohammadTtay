@@ -49,6 +49,22 @@ class linkList {
 
     this -> size++;
   }
+  int operator[](int coloumn) {
+
+      coloumn+=1;
+
+    Node * currentNode = this->head;
+
+    while(currentNode!=nullptr){
+        if(currentNode->coloumnIndex>coloumn) break;
+        if(currentNode->coloumnIndex==coloumn){
+            return currentNode->value;
+            break;
+        }
+        currentNode=currentNode->nextInRow;
+    }
+    return 0;
+  }
 
 };
 

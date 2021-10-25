@@ -18,20 +18,24 @@ using namespace std;
 class Matrix {
   public:
     vector < linkList > matrix;
+    QString Address;
+    int rowNum;
+    int colNum;
 
   Matrix() {//Read From CSV File With Constructor When We Start The Program
-    cout << "Enter The Name Of The File That You Wanna Use: (Ex---> M(7000,9000).csv\n";
-    string temp;
-    getline(cin, temp); //Getting Name Of CSV File
-    QString fileName = QString::fromStdString(temp);
-    fileName = "../" + fileName;
+      cout << "Enter The Address Of The File That You Wanna Use: (Ex---> C:\\Users\\mohammmad\\Desktop\\M(7000,9000).csv\n";
+      string temp;
+      getline(cin, temp); //Getting Address Of CSV File
+      this->Address = QString::fromStdString(temp);
+      this->Address.replace('\\', '/');
 
-    QFile file(fileName);
-    QTextStream in ( & file);
+      QFile file(this->Address);
+      QTextStream in ( & file);
+
 
     if (!file.exists()) {
 
-      cout << "\n\n\nPlease Enter The Name Of File Correctly\n\n";
+      cout << "\n\n\nPlease Enter The Address Of The File Correctly\n\n";
 
       exit(1);
 
@@ -47,6 +51,7 @@ class Matrix {
         tempString = in .readLine();
         if (tempString.isNull()) break;
         tempSList = tempString.split(',');
+        this->colNum=tempSList.size();
 
         tempLN = new linkList;
         for (int x = 0; x < tempSList.size(); x++) {
@@ -63,6 +68,7 @@ class Matrix {
       }
       file.close();
     }
+    this->rowNum=matrix.size();
   }
 
   void Insert(int row, int col, int value) {
@@ -175,6 +181,28 @@ class Matrix {
 
   }
   void print(bool type) {
+
+    if (type == 0) {
+
+      for (int i = 0; i < rowNum; i++) {
+        for (int j = 0; j < colNum; j++) {
+          cout << matrix[i][j] << "  ";
+        }
+        cout << endl;
+      }
+
+    } else {
+
+      for (int i = 0; i < rowNum; i++) {
+        Node * currentNode = matrix[i].head;
+        while (currentNode != nullptr) {
+          cout << i + 1 << " " << currentNode -> coloumnIndex << " " << currentNode -> value << endl;
+          currentNode = currentNode -> nextInRow;
+        }
+
+      }
+
+    }
 
   }
 
