@@ -173,8 +173,33 @@ void Print(Matrix * matrix) {
 void Save(Matrix * matrix) {
     system("cls");
     cout << "::[ Saving Menu ]::\n\n";
+    int saveMode;
 
-    matrix -> save_file();
+    cout << "<1> Complete matrix\n" <<
+        "<2> Compressed\n" <<
+        "<3> Back\n" <<
+        "Please Enter A Number: ";
+    cin >> saveMode;
+    cout << "\n\n";
+
+    switch (saveMode) {
+
+    case 1:
+        matrix -> save_file(0);
+        break;
+    case 2:
+        matrix -> save_file(1);
+        break;
+    case 3:
+        return;
+    default:
+        cout << "Please Enter A Valid Number";
+        cout << "\n\nPress Any Key to Continue...";
+        getch();
+        Save(matrix);
+        break;
+    }
+    matrix -> save_file(1);
 
     cout << "This CSV File Has Saved Successfully\n\n\n\nPress Any Key to Go Back...";
     getch();

@@ -205,9 +205,9 @@ class Matrix {
     }
 
   }
-  void save_file(){
-
-      QFile file(this->Address);
+  void save_file(bool type) {
+    if (type == 0) {
+      QFile file(this -> Address);
       QTextStream out( & file);
       file.open(QIODevice::WriteOnly | QIODevice::Text);
       for (int i = 0; i < rowNum; i++) {
@@ -217,6 +217,22 @@ class Matrix {
         out << endl;
       }
       file.close();
+    } else {
+      QString newAddress = this -> Address.left(this -> Address.lastIndexOf('.'))+"-Compressed.csv";
+      QFile file(newAddress);
+      QTextStream out( & file);
+      file.open(QIODevice::WriteOnly | QIODevice::Text);
+      for (int i = 0; i < rowNum; i++) {
+        Node * currentNode = matrix[i].head;
+        while (currentNode != nullptr) {
+          out << i + 1 << "," << currentNode -> coloumnIndex << "," << currentNode -> value << endl;
+          currentNode = currentNode -> nextInRow;
+        }
+
+      }
+      file.close();
+
+    }
   }
 
 };
