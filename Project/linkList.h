@@ -2,69 +2,69 @@
 #define LINKLIST_H
 
 class Node {
-  public:
-    int value;
-  int coloumnIndex;
-  Node * nextInRow;
+    public:
+        int value;
+    int coloumnIndex;
+    Node * nextInRow;
 
-  Node() {
-    nextInRow = nullptr;
-  }
-  Node(int value, int coloumnIndex) {
-    this -> value = value;
-    this -> coloumnIndex = coloumnIndex;
-     nextInRow = nullptr;
-  }
+    Node() {
+        nextInRow = nullptr;
+    }
+    Node(int value, int coloumnIndex) {
+        this -> value = value;
+        this -> coloumnIndex = coloumnIndex;
+        nextInRow = nullptr;
+    }
 };
 
 class linkList {
-  public:
-    Node * head;
-  Node * tail;
-  int size;
+    public:
+        Node * head;
+    Node * tail;
+    int size;
 
-  linkList() {
-    this -> head = nullptr;
-    this -> tail = nullptr;
-    this -> size = 0;
-  }
-
-  void addFirst(Node * temp) {
-    temp -> nextInRow = head;
-    head = temp;
-    if (size == 0) {
-      tail = head;
+    linkList() {
+        this -> head = nullptr;
+        this -> tail = nullptr;
+        this -> size = 0;
     }
-    this -> size++;
-  }
-  void addLast(Node * temp) {
 
-    if (size == 0) {
-      head = temp;
-      temp -> nextInRow = nullptr;
-    } else {
-      tail -> nextInRow = temp;
-    }
-    tail = temp;
-
-    this -> size++;
-  }
-  int operator[](int coloumn) {
-
-      coloumn+=1;
-
-    Node * currentNode = this->head;
-
-    while(currentNode!=nullptr){
-        if(currentNode->coloumnIndex>coloumn) break;
-        if(currentNode->coloumnIndex==coloumn){
-            return currentNode->value;
-            break;
+    void addFirst(Node * temp) {
+        temp -> nextInRow = head;
+        head = temp;
+        if (size == 0) {
+            tail = head;
         }
-        currentNode=currentNode->nextInRow;
+        this -> size++;
     }
-    return 0;
-  }
+    void addLast(Node * temp) {
+
+        if (size == 0) {
+            head = temp;
+            temp -> nextInRow = nullptr;
+        } else {
+            tail -> nextInRow = temp;
+        }
+        tail = temp;
+
+        this -> size++;
+    }
+    int operator[](int coloumn) {
+
+        coloumn += 1;
+
+        Node * currentNode = this -> head;
+
+        while (currentNode != nullptr) {
+            if (currentNode -> coloumnIndex > coloumn) break;
+            if (currentNode -> coloumnIndex == coloumn) {
+                return currentNode -> value;
+                break;
+            }
+            currentNode = currentNode -> nextInRow;
+        }
+        return 0;
+    }
 
 };
 

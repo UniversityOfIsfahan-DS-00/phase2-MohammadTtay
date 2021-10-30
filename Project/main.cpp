@@ -81,7 +81,7 @@ void Insert(Matrix * matrix) {
 
     matrix -> Insert(row, col, value);
 
-    cout << "This Value Has Inserted Successfully\n\n\n\nPress Any Key to Go Back...";
+    cout << "\n---This Value Has Inserted Successfully---\n\n\n\nPress Any Key to Go Back...";
     getch();
     return;
 }
@@ -98,7 +98,7 @@ void Delete(Matrix * matrix) {
 
     matrix -> Delete(row, col);
 
-    cout << "This Value Has Deleted Successfully\n\n\n\nPress Any Key to Go Back...";
+    cout << "\n---This Value Has Deleted Successfully---\n\n\n\nPress Any Key to Go Back...";
     getch();
     return;
 
@@ -133,7 +133,7 @@ void Update(Matrix * matrix) {
 
     matrix -> update(row, col, value);
 
-    cout << "This Element Has Updated Successfully\n\n\n\nPress Any Key to Go Back...";
+    cout << "\n---This Element Has Updated Successfully---\n\n\n\nPress Any Key to Go Back...";
     getch();
     return;
 }
@@ -145,17 +145,17 @@ void Print(Matrix * matrix) {
     cout << "<1> Complete matrix\n" <<
         "<2> Compressed\n" <<
         "<3> Back\n" <<
-        "Please Enter A Number: ";
+        "\nPlease Enter A Number: ";
     cin >> printMode;
     cout << "\n\n";
 
     switch (printMode) {
 
     case 1:
-        matrix -> print(0);
+        matrix -> print(1);
         break;
     case 2:
-        matrix -> print(1);
+        matrix -> print(0);
         break;
     case 3:
         return;
@@ -178,17 +178,17 @@ void Save(Matrix * matrix) {
     cout << "<1> Complete matrix\n" <<
         "<2> Compressed\n" <<
         "<3> Back\n" <<
-        "Please Enter A Number: ";
+        "\nPlease Enter A Number: ";
     cin >> saveMode;
     cout << "\n\n";
 
     switch (saveMode) {
 
     case 1:
-        matrix -> save_file(0);
+        matrix -> save_file(1);
         break;
     case 2:
-        matrix -> save_file(1);
+        matrix -> save_file(0);
         break;
     case 3:
         return;
